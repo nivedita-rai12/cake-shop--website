@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+ <script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function addToCart(name, price) {
+    let existingItem = cart.find(item => item.name === name);
+
+    if (existingItem) {
+      existingItem.quantity += 1;   // increase quantity
+    } else {
+      cart.push({
+        name: name,
+        price: price,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    document.getElementById("cartCount").innerText = cart.length;
+    alert(name + " added to cart 🎂");
+  }
+
+  window.onload = () => {
+    document.getElementById("cartCount").innerText = cart.length;
+  };
+</script>
+
+
+
+<body>
+  
+  <header class="navbar">
+    <h1 class="logo">Happy Crumbs</h1>
+
+    <nav class="nav-links">
+      <a href="#Home">Home</a>
+      <a href="#Cakes">Cakes</a>
+      <a href="#Contact">Contact</a>
+      <a href="#🔍">🔍</a>
+      <a href="cart.html">🛒 <span id="cartCount">0</span></a>
+
+
+    </nav>
+  </header>
+  <div class="logos">
+    <img src="https://img.freepik.com/premium-vector/sweet-cake-bakery-shop-logo_807399-1051.jpg" alt="Cake" class="url">
+  </div>
+
+  <section id="Home">
+
+    <div class="write">
+      <h1>Baked with Love, Served with Joy</h1>
+      <br>
+      <p>Freshness baked daily.
+        
+        From our oven to your table.
+        Quality in every crumb.</p>
+      </div>
+    </section>
+  <div class="imgg">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmCrBaWV_eozBVqlN3Bn8WtDf_HiTQ0ZOHIw&s" alt="cakeeee" class="logo-img" width="200px" height="auto">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYUpuA9vqnXmVOGadtnn5FsKxRUuK_HPMbaQ&s" alt="img2" class="url">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz-Wc0qK0X03rgyT1KGlogimxICZmQ_cqjEw&s" alt="img3" class="url">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDfm6mjAL19YdvehI9dYnZ3gIaaU4BG0YjSw&s" alt="img4" class="url">
+   </div>
+ 
+  <div class="buttons">
+    <button type="submit">Order Now </button>
+  </div>
+
+  <section id="Cakes">
+      <h2>Our Special Cakes</h2>
+      <div class="cake-container">
+
+        <div class="cake-grid" data-name="Chocolate Truffle">
+          <img src="https://api.floraindia.com/upload/fqjfYUBYHS1754045058168.webp" alt="cake truffle" class="url" width="200px" height="auto">
+          <h3>Chocolate Truffle</h3>
+          <p>₹599</p>
+          <button onclick="addToCart('Chocolate Truffle',599)">Add to Cart</button>
+        </div>
+        <div class="cake-grid" data-name="strawberry-bliss">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjliVLKVKlFKesX3pjv7-R9OM0fnDGl_Nj8g&s" alt="strawberry-bliss" class="url" width="200px" height="auto">
+          <h3>Strawberry Bliss</h3>
+          <p>₹549</p>
+          <button onclick="addToCart('Strawberry Bliss',549)">Add to Cart</button>
+        </div>
+        <div class="cake-grid" data-name="Vanilla Delight">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsVmGgnLvc4scF3Zl-KCi-I4wa0W4IknbHTQ&s" alt="vailla" class="url">
+          <h3>Vanilla Delight</h3>
+           <p>₹499</p>
+          <button onclick="addToCart('Vanilla Delight',499)">Add to Cart</button>
+        </div>
+        <div class="cake-grid" data-name="Pineapple Delight">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSliPq1hXPIfmeXEFP5MGKhmhCYV68W_1VF2A&s" alt="PineApple Delight" class="url" width="200px" height="auto">
+          <h3>Pineapple Delight</h3>
+          <p>₹459</p>
+          <button onclick="addToCart('Pineapple Delight',459)">Add to Cart</button>
+        </div>
+        <div class="cake-grid" data-name="BlueBerry CheeseCake">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAucy0LugI9Lit7SZVbgiAYKZ0m8JXrXCXvA&s" alt="blueberry" class="url">
+          <h3>BlueBerry CheeseCake</h3>
+          <p>₹479</p>
+          <button onclick="addToCart('BlueBerry CheeseCake',479)">Add to cart</button>
+        </div>
+        <div class="cake-grid" data-name="Red Velvet">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNRI6AxLphzuJrgQJ3jGfFMAqX3eVlukxr7Q&s" alt="Red Velvet" class="url">
+          <h3>Red Velvet</h3>
+          <p>₹550</p>
+          <button onclick="addToCart('Red Velvet',550)">Add to cart</button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>CLASSIC & BESTSELLERS</h2>
+    <div class="cake-container">
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRur9mZzu0oZEg3rawi_ngJz06tmFK1qlivOw&s" alt="Black-forest" class="url">
+        <h3>Black-forest</h3>
+        <p>₹479</p>
+        <button onclick="addToCart('Black-forest',479)">Add to cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpRgufRbo_Kerrs2H_pCAtpmvdbMUvgmTWzQ&s" alt="Coffee-Mocha" class="url">
+        <h3>Coffee Mocha</h3>
+        <p>₹550</p>
+        <button onclick="addToCart('Coffee-Mocha',550)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb8_oAAsl8I7ShSJeUKFv_wRjVIIKA0pYd3w&s" alt="white-forest" class="url">
+        <h3>white-forest</h3>
+        <p>₹520</p>
+        <button onclick="addToCart('white-forest',520)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTcqsXPFfCnZEq5vYDEZ88gasrA6ozXM9N8w&s" alt="ButterSchoch" class="url">
+        <h3>Butterscotch</h3>
+        <p>₹440</p>
+        <button onclick="addToCart('Butterscotch',440)">Add to Cart</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <h2>CUPCAKES & MINI CAKES</h2>
+    <div class="cake-container">
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsEmzhreqxo-s2AOVi3N-zRDqmXeNCMTTyQQ&s" alt="chocolate-cupcake" class="url">
+        <h3>Chocolate Cupcake</h3>
+        <p>₹89</p>
+        <button onclick="addToCart('chocolate-cupcake',89)">Add to Cart</button>
+     </div>
+     <div class="cake-grid">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkujoQSk75Cp4e4jgQGDRQ5YUuAbwyguy2yQ&s" alt="Vanilla Cupcake" class="url">
+      <h3>Vanilla Cupcake</h3>
+      <p>₹79</p>
+      <button onclick="addToCart('Vanilla Cupcake',79)">Add to Cart</button>
+     </div>
+     <div class="cake-grid">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRrvsdMnc48Wl8IG3-YWE-JoTmo7WlqWJc8g&s" alt="Mini-Jar Cakes" class="url">
+      <h3>Mini Jar Cakes</h3>
+      <p>₹125</p>
+      <button onclick="addToCart('Mini Jar Cakes',125)">Add to Cart</button>
+     </div>
+     <div class="cake-grid">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNMKZO7EaiJFeg5nhX7SPj7gf3MoliHndXhw&s" alt="Rain-bow Cupcake" class="url">
+      <h3>Rainbow Cupcake</h3>
+      <p>₹110</p>
+      <button onclick="addToCart('Rainbow Cupcake',110)">Add to cart</button>
+     </div>
+     <div class="cake-grid">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp-cngWbeTwTdx5jCNAbDfk53X3dmke_YWrw&s" alt="Red Velvet Cupcake" class="url">
+      <h3>Red Velvet Cupcake</h3>
+      <p>₹89</p>
+      <button onclick="addToCart('Red Velvet Cupcake',89)">Add to Cart</button>
+     </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <h2>SPECIAL OCCASION CAKES</h2>
+    <div class="cake-container">
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPiO-JeBEMglf0he0arRVQXlxvtAXFnyuMSQ&s" alt="kid-special-birthday-special" class="url">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8GQ8o-LySmHRxU42B-o_S45U_mLqZDAAfug&s" alt="kid-special-birthday-special" class="url">
+        <h3>Kids Cartoon Cake</h3>
+        <p>₹699</p>
+        <button onclick="addToCart('Birthday Special Theme',699)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4EUl-ZB59jeRpCJAAXE1SX269NnuplbgpEQ&s" alt="Anniversary special" class="url">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5JH6k3HnAMn0FxPY5a15cJ60Ok9fsFMrW7Q&s" alt="Anniversary special" class="url">
+        <h3>Anniversary Heart Cake</h3>
+        <p>₹889</p>
+        <button onclick="addToCart('Anniversary Heart Cake',889)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSB1FMiJhxTGUEDNAgI0kkl5jGLcfcMi6XFcA&s" alt="Birthday" class="url">
+        <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcT0_-z9M1VR0t9FLU865ai-oIRnUye8DRmKWxWDmgkRJmlaaL-zPNN5DF-cBoLY2JKBTkQJLNAIIADvDP3H73I0bzpRl2X_VkB7HeHZyrfJGKmGu-KcB1Cu" alt="Birthday" class="url">
+        <h3>Birthday Special Theme Cake</h3>
+        <p>₹915</p>
+        <button onclick="addToCart('Birthday Special Theme Cake',915)">Add to Cart</button>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h2>PREMIUM & TRENDING CAKES</h2>
+    <div class="cake-container">
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEMCEHBpFjFP-82i7mWmkOKdyTZmtGESWiyQ&s" alt="Lotus Biscoff Cake" class="url">
+        <h3>Lotus Biscoff Cake</h3>
+        <p>₹380</p>
+        <button onclick="addToCart('Lotus Biscoff Cake',380)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://trivandrumcakehouse.com/wp-content/uploads/2019/11/Ferrero-rocher-cake.jpeg" alt="Ferrero-rocher-cake" class="url">
+        <h3>Ferrero-rocher-cake</h3>
+        <p>₹790</p>
+        <button onclick="addToCart('Ferrero-rocher-cake',790)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Sx9N0AtPmmJrKvstpA37o15N5D1OuhZJNQ&s" alt="Kitkat" class="url">
+        <h3>KitKat Chocolate Cake</h3>
+        <p>₹649</p>
+        <button onclick="addToCart('KitKat Chocolate Cake',649)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://www.tasteofhome.com/wp-content/uploads/2017/09/exps1816_RDS1178126D1_WEB.jpg" alt="Oreo Cream Cake" class="url">
+        <h3>Oreo Cream Cake</h3>
+        <p>₹549</p>
+        <button onclick="addToCart('Oreo Cream Cake',549)">Add to Cart</button>
+      </div>
+      <div class="cake-grid">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf8Yqld-OYurBCph5InmwwjdFgmQZRXNpGtw&s" alt="Gulab Jamun Cake" class="url">
+        <h3>Gulab Jamun Cake</h3>
+        <p>₹580</p>
+        <button onclick="addToCart('Gulab Jamun Cake',580)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+    <section id="Contact" class="contact-section">
+
+  <h2>Contact Us</h2>
+  <p>We’d love to hear from you! Order your favorite cake today 🎂</p>
+
+  <div class="contact-container">
+
+    <!-- Contact Info -->
+    <div class="contact-info">
+      <p><strong>📞 Phone:</strong> +91 7744864212</p>
+      <p><strong>📧 Email:</strong> happycrumbs@gmail.com</p>
+      <p><strong>📍 Address:</strong> Kolkata, West Bengal</p>
+    </div>
+
+    <!-- Contact Form -->
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+  </div>
+
+</section>
+<footer class="footer">
+  <div class="footer-content">
+    <h3>Happy Crumbs 🎂</h3>
+    <p>Fresh cakes baked with love every day.</p>
+     <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#cakes">Cakes</a>
+      <a href="#contact">Contact</a>
+       <p class="copyright">
+      © 2025 Happy Crumbs. All rights reserved.
+    </p>
+  </div>
+    </div>
+
+</footer>
+
+
+</body>

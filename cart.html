@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="styyl.css">
+</head>
+<body>
+
+<h2 class="cart-title">Your Cart 🛒</h2>
+
+<!-- ✅ THIS ID IS REQUIRED -->
+<div class="cart-container" id="cartContainer"></div>
+
+<h3 class="total" id="total"></h3>
+
+<script>
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let cartContainer = document.getElementById("cartContainer");
+  let totalDiv = document.getElementById("total");
+
+  function renderCart() {
+    cartContainer.innerHTML = "";
+    let total = 0;
+
+    // EMPTY CART
+    if (cart.length === 0) {
+      cartContainer.innerHTML = `
+        <div class="empty-cart">
+          <h3>Your cart is empty 🧁</h3>
+          <p>Add some delicious cakes!</p>
+        </div>
+      `;
+      totalDiv.innerText = "";
+      return;
+    }
+
+    // CART ITEMS
+    cart.forEach((item, index) => {
+      total += item.price * item.quantity;
+
+      cartContainer.innerHTML += `
+        <div class="cart-card">
+          <div class="cart-info">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+          </div>
+
+          <div class="qty-box">
+            <button onclick="changeQty(${index}, -1)">−</button>
+            <span>${item.quantity}</span>
+            <button onclick="changeQty(${index}, 1)">+</button>
+          </div>
+
+          <button class="remove-btn" onclick="removeItem(${index})">❌</button>
+        </div>
+      `;
+    });
+
+    totalDiv.innerText = "Total Price: ₹" + total;
+  }
+
+  function changeQty(index, value) {
+    cart[index].quantity += value;
+
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+  }
+
+  function removeItem(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+  }
+
+  renderCart();
+</script>
+
+</body>
+</html>
