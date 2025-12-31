@@ -5,6 +5,8 @@
   <title>Your Cart</title>
   <link rel="stylesheet" href="styyl.css">
 </head>
+<div id="toast">Added to cart 🛒</div>
+
 <body>
 
 <h2 class="cart-title">Your Cart 🛒</h2>
@@ -78,6 +80,25 @@
   }
 
   renderCart();
+  function addToCart(name, price, image) {
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push({ name, price, image, quantity: 1 });
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  showToast();
+}
+
+function showToast() {
+  const toast = document.getElementById("toast");
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2000);
+}
+
 </script>
 
 </body>
